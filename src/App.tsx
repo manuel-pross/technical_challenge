@@ -1,8 +1,13 @@
+import DataTable from "@/components/dataTable";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
+
 function App() {
   return (
-    <>
-      <p className="bg-red-300">hello Lauch</p>
-    </>
+    <QueryClientProvider client={queryClient}>
+      <DataTable />
+    </QueryClientProvider>
   );
 }
 
