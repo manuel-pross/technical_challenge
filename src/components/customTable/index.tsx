@@ -17,7 +17,10 @@ function CustomTable() {
   const [sortedTechSpecs, setSortedTechSpecs] = useState(techSpecs);
 
   useEffect(() => {
-    setSortedTechSpecs(techSpecs);
+    if (!techSpecs) return;
+    const initalSortedTechSpecs = [...techSpecs];
+    sortTechSpecs(initalSortedTechSpecs, "label", "asc");
+    setSortedTechSpecs(initalSortedTechSpecs);
   }, [status, techSpecs, error]);
 
   if (status === "loading") {
@@ -47,12 +50,12 @@ function CustomTable() {
   return (
     <table>
       <caption>My personal Phone</caption>
-      <TableHead colHeaders={tableHeaders} onClick={handleColHeaderClick} />
-      {sortedTechSpecs ? (
-        <TableBody techSpecs={sortedTechSpecs} />
-      ) : (
-        <TableBody techSpecs={techSpecs} />
-      )}
+      <TableHead
+        colHeaders={tableHeaders}
+        InitialSortingOrder="asc"
+        onClick={handleColHeaderClick}
+      />
+      {sortedTechSpecs && <TableBody techSpecs={sortedTechSpecs} />}
     </table>
   );
 }

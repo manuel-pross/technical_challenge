@@ -1,16 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type TableHeadProps = {
   colHeaders: string[];
+  InitialSortingOrder: "asc" | "desc";
   onClick: (header: string, sortOrder: "asc" | "desc") => void;
 };
 
-function TableHead({ colHeaders, onClick }: TableHeadProps) {
-  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
+function TableHead({
+  colHeaders,
+  InitialSortingOrder,
+  onClick,
+}: TableHeadProps) {
+  const [sortOrder, setSortOrder] = useState<"asc" | "desc">(
+    InitialSortingOrder,
+  );
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setSortOrder(sortOrder === "desc" ? "asc" : "desc");
-    onClick(event.currentTarget.innerText, sortOrder);
+    const newSortOrder = sortOrder === "desc" ? "asc" : "desc";
+
+    setSortOrder(newSortOrder);
+    onClick(event.currentTarget.innerText, newSortOrder);
   };
 
   return (
