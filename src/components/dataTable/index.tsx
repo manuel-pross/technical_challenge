@@ -1,22 +1,7 @@
-import { TechSpec } from "@/types";
-import { useQuery } from "@tanstack/react-query";
+import useTechSpecs from "@/hooks/useTechSpecs";
 
 function DataTable() {
-  const {
-    data: techSpecs,
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["techSpecs"],
-    refetchOnWindowFocus: false,
-    queryFn: async () => {
-      const res = await fetch("./src/assets/data.json");
-
-      const techSpecs = (await res.json()) as TechSpec[];
-      console.log(techSpecs);
-      return techSpecs;
-    },
-  });
+  const { data: techSpecs, isLoading, error } = useTechSpecs();
 
   if (isLoading) {
     return <p>loading...</p>;
