@@ -1,4 +1,4 @@
-import DataTable from "@/components/dataTable";
+import DataTable from "@/components/customTable";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
