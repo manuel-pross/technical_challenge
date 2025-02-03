@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "label": "Height",
+    "category": "Dimensions",
+    "note": "Measured in centimeters",
+    "user_value": "180",
+    "system_value": "175",
+    "name": "height"
+  },
+  {
+    "id": 2,
+    "label": "Width",
+    "category": "Dimensions",
+    "note": "Measured in centimeters",
+    "user_value": "80",
+    "system_value": "78",
+    "name": "width"
+  },
+  {
+    "id": 3,
+    "label": "Weight",
+    "category": "Physical Attributes",
+    "note": "Measured in kilograms",
+    "user_value": "70",
+    "system_value": "68",
+    "name": "weight"
+  },
+  {
+    "id": 4,
+    "label": "Color",
+    "category": "Appearance",
+    "note": "Primary color",
+    "user_value": "Blue",
+    "system_value": "Dark Blue",
+    "name": "color"
+  },
+  {
+    "id": 5,
+    "label": "Material",
+    "category": "Composition",
+    "note": "Primary material used",
+    "user_value": "Aluminum",
+    "system_value": "Aluminum Alloy",
+    "name": "material"
+  },
+  {
+    "id": 6,
+    "label": "Battery Capacity",
+    "category": "Power",
+    "note": "Measured in mAh",
+    "user_value": "4000",
+    "system_value": "3900",
+    "name": "battery_capacity"
+  },
+  {
+    "id": 7,
+    "label": "Screen Size",
+    "category": "Display",
+    "note": "Measured in inches",
+    "user_value": "6.5",
+    "system_value": "6.4",
+    "name": "screen_size"
+  },
+  {
+    "id": 8,
+    "label": "Resolution",
+    "category": "Display",
+    "note": "Pixel resolution",
+    "user_value": "1080x2400",
+    "system_value": "1080x2340",
+    "name": "resolution"
+  },
+  {
+    "id": 9,
+    "label": "Processor",
+    "category": "Hardware",
+    "note": "CPU model",
+    "user_value": "Snapdragon 888",
+    "system_value": "Snapdragon 870",
+    "name": "processor"
+  },
+  {
+    "id": 10,
+    "label": "RAM",
+    "category": "Memory",
+    "note": "Measured in GB",
+    "user_value": "8",
+    "system_value": "8",
+    "name": "ram"
+  },
+  {
+    "id": 11,
+    "label": "Storage",
+    "category": "Memory",
+    "note": "Measured in GB",
+    "user_value": "256",
+    "system_value": "256",
+    "name": "storage"
+  },
+  {
+    "id": 12,
+    "label": "Operating System",
+    "category": "Software",
+    "note": "OS version",
+    "user_value": "Android 12",
+    "system_value": "Android 11",
+    "name": "os"
+  },
+  {
+    "id": 13,
+    "label": "Camera Resolution",
+    "category": "Camera",
+    "note": "Measured in MP",
+    "user_value": "64",
+    "system_value": "60",
+    "name": "camera_resolution"
+  },
+  {
+    "id": 14,
+    "label": "Bluetooth Version",
+    "category": "Connectivity",
+    "note": "Version number",
+    "user_value": "5.2",
+    "system_value": "5.1",
+    "name": "bluetooth_version"
+  },
+  {
+    "id": 15,
+    "label": "WiFi Standard",
+    "category": "Connectivity",
+    "note": "WiFi version supported",
+    "user_value": "WiFi 6",
+    "system_value": "WiFi 5",
+    "name": "wifi_standard"
+  },
+  {
+    "id": 16,
+    "label": "NFC Support",
+    "category": "Features",
+    "note": "Near-field communication availability",
+    "user_value": "Yes",
+    "system_value": "No",
+    "name": "nfc_support"
+  },
+  {
+    "id": 17,
+    "label": "Water Resistance",
+    "category": "Durability",
+    "note": "IP rating",
+    "user_value": "IP68",
+    "system_value": "IP67",
+    "name": "water_resistance"
+  },
+  {
+    "id": 18,
+    "label": "Charging Speed",
+    "category": "Power",
+    "note": "Measured in watts",
+    "user_value": "30",
+    "system_value": "25",
+    "name": "charging_speed"
+  },
+  {
+    "id": 19,
+    "label": "Headphone Jack",
+    "category": "Audio",
+    "note": "3.5mm jack availability",
+    "user_value": "No",
+    "system_value": "No",
+    "name": "headphone_jack"
+  },
+  {
+    "id": 20,
+    "label": "Speakers",
+    "category": "Audio",
+    "note": "Stereo or mono",
+    "user_value": "Stereo",
+    "system_value": "Stereo",
+    "name": "speakers"
+  }
+]
