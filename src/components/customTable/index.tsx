@@ -90,7 +90,7 @@ function CustomTable() {
       {renderStatus() || (
         <table className="bg-tokyo-storm border-collapse w-full md:w-[750px] lg:w-[900px] xl:w-[1200px]">
           <caption className="pl-4 pb-3 text-tokyo-white text-left">
-            My personal Phone
+            Phone of my dreams
           </caption>
           <TableHead colHeaders={colHeaders} />
           {sortedTechSpecs && <TableBody techSpecs={sortedTechSpecs} />}
