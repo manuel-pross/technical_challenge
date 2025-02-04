@@ -1,6 +1,7 @@
 import TableBody from "@/components/customTable/tableBody";
 import TableHead from "@/components/customTable/tableHead";
 import useTechSpecs from "@/hooks/useTechSpecs";
+import { useCategoryStore } from "@/stores/categoryStore";
 import { sortTechSpecs } from "@/utils";
 import { useEffect, useState } from "react";
 
@@ -16,12 +17,34 @@ function CustomTable() {
   const { status, data: techSpecs, error } = useTechSpecs();
   const [sortedTechSpecs, setSortedTechSpecs] = useState(techSpecs);
 
+  const selectedCategory = useCategoryStore((state) => state.category);
+
   useEffect(() => {
     if (!techSpecs) return;
+
     const initalSortedTechSpecs = [...techSpecs];
     sortTechSpecs(initalSortedTechSpecs, "label", "asc");
     setSortedTechSpecs(initalSortedTechSpecs);
   }, [status, techSpecs, error]);
+
+  useEffect(() => {
+    if (!techSpecs) return;
+
+    if (!selectedCategory) {
+      setSortedTechSpecs(techSpecs);
+      return;
+    }
+
+    if (selectedCategory) {
+      const techSpecsToFilter = [...techSpecs];
+
+      setSortedTechSpecs(
+        techSpecsToFilter.filter(
+          (techSpec) => techSpec.category === selectedCategory,
+        ),
+      );
+    }
+  }, [selectedCategory, techSpecs]);
 
   if (status === "loading") {
     return <p>loading...</p>;
