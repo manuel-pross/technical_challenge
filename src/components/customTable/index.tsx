@@ -88,8 +88,8 @@ function CustomTable() {
   return (
     <>
       {renderStatus() || (
-        <table className="bg-tokyo-storm text-tokyo-white border-collapse">
-          <caption className="pl-3 pb-3 text-tokyo-white text-left">
+        <table className="bg-tokyo-storm border-collapse w-full md:w-[750px] lg:w-[900px] xl:w-[1200px]">
+          <caption className="pl-4 pb-3 text-tokyo-white text-left">
             My personal Phone
           </caption>
           <TableHead colHeaders={colHeaders} />

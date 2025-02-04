@@ -19,6 +19,8 @@
   --color-tokyo-black: #414868;
   --color-tokyo-storm: #24283b;
   --color-tokyo-night: #1a1b26;
+
+  --ease-in-expo: cubic-bezier(0, 0.11, 0.35, 2);
 }
 
 body {
@@ -27,9 +29,13 @@ body {
 
 th,
 td {
-  @apply p-4;
+  @apply p-4 text-tokyo-white;
 }
 
 th {
   @apply text-left;
+}
+
+.search-input {
+  @apply h-[50px] w-[50px] border-none rounded-[25px] py-[10px] pl-[10px] pr-[40px] text-lg tracking-[2px] text-tokyo-white bg-tokyo-blue transition-all duration-500 ease-in-out placeholder:text-tokyo-white placeholder:text-lg placeholder:font-thin placeholder:tracking-[2px] focus:w-[300px] focus:rounded-[0px] focus:bg-transparent focus:border-b-[1px] focus:border-solid focus:transition-all focus:duration-500 focus:ease-in-expo focus-visible:outline-none focus-visible:border-b-tokyo-green peer-focus:w-[300px] peer-focus:rounded-[0px] peer-focus:bg-transparent peer-focus:border-b-[1px] peer-focus:border-solid peer-focus:transition-all peer-focus:duration-500 peer-focus:ease-in-expo;
 }
