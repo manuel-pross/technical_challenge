@@ -6,17 +6,17 @@ type TableBodyProps = {
 function TableBody({ techSpecs }: TableBodyProps) {
   return (
     <tbody>
-      {techSpecs.map((techSpec) => {
-        return (
-          <tr key={techSpec.id}>
-            <th>{techSpec.label}</th>
-            <td>{techSpec.category}</td>
-            <td>{techSpec.system_value}</td>
-            <td>{techSpec.user_value}</td>
-            <td>{techSpec.note}</td>
+      {techSpecs.map(
+        ({ id, label, category, system_value, user_value, note }) => (
+          <tr key={id}>
+            <th scope="row">{label}</th>
+            <td>{category}</td>
+            <td>{system_value}</td>
+            <td>{user_value}</td>
+            <td>{note}</td>
           </tr>
-        );
-      })}
+        ),
+      )}
     </tbody>
   );
 }
