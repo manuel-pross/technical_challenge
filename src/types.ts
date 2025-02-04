@@ -17,15 +17,10 @@ export const categories = [
 
 export type Category = (typeof categories)[number];
 
-export type SelectOption = {
+export type Option = {
   label: string;
   value: string;
 };
-
-export const selectOptions: SelectOption[] = categories.map((category) => ({
-  label: category,
-  value: category,
-}));
 
 //export type Category =
 //  | "Dimensions"
