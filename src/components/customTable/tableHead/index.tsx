@@ -1,3 +1,4 @@
+import CategoryHeader from "@/components/customTable/tableHead/categoryHeader";
 import { useState } from "react";
 
 type TableHeadProps = {
@@ -27,13 +28,17 @@ function TableHead({
       <tr>
         {colHeaders.map((header) => (
           <th key={header}>
-            <button
-              className="hover:cursor-pointer"
-              type="button"
-              onClick={handleClick}
-            >
-              {header}
-            </button>
+            {header === "category" ? (
+              <CategoryHeader />
+            ) : (
+              <button
+                className="hover:cursor-pointer"
+                type="button"
+                onClick={handleClick}
+              >
+                {header}
+              </button>
+            )}
           </th>
         ))}
       </tr>
