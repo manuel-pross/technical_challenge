@@ -1,28 +1,11 @@
+import SortOrderSelect from "@/components/customTable/sortOrderSelect";
 import CategoryHeader from "@/components/customTable/tableHead/categoryHeader";
-import { useState } from "react";
 
 type TableHeadProps = {
-  colHeaders: string[];
-  InitialSortingOrder: "asc" | "desc";
-  onClick: (header: string, sortOrder: "asc" | "desc") => void;
+  colHeaders: readonly string[];
 };
 
-function TableHead({
-  colHeaders,
-  InitialSortingOrder,
-  onClick,
-}: TableHeadProps) {
-  const [sortOrder, setSortOrder] = useState<"asc" | "desc">(
-    InitialSortingOrder,
-  );
-
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const newSortOrder = sortOrder === "desc" ? "asc" : "desc";
-
-    setSortOrder(newSortOrder);
-    onClick(event.currentTarget.innerText, newSortOrder);
-  };
-
+function TableHead({ colHeaders }: TableHeadProps) {
   return (
     <thead>
       <tr>
@@ -31,13 +14,7 @@ function TableHead({
             {header === "category" ? (
               <CategoryHeader />
             ) : (
-              <button
-                className="hover:cursor-pointer"
-                type="button"
-                onClick={handleClick}
-              >
-                {header}
-              </button>
+              <SortOrderSelect text={header} />
             )}
           </th>
         ))}

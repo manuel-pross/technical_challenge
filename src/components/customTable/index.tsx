@@ -3,23 +3,39 @@ import TableHead from "@/components/customTable/tableHead";
 import useTechSpecs from "@/hooks/useTechSpecs";
 import { useCategoryStore } from "@/stores/categoryStore";
 import { useSearchTermStore } from "@/stores/searchTermStore";
+import { useSortOrderStore } from "@/stores/sortOrderStore";
+import { colHeaders, TechSpec } from "@/types";
 import { sortTechSpecs } from "@/utils";
-import { useEffect, useState } from "react";
-
-const tableHeaders = [
-  "label",
-  "category",
-  "system_value",
-  "user_value",
-  "note",
-];
+import { useCallback, useEffect, useState } from "react";
 
 function CustomTable() {
   const { status, data: techSpecs, error } = useTechSpecs();
-  const [sortedTechSpecs, setSortedTechSpecs] = useState(techSpecs);
 
   const selectedCategory = useCategoryStore((state) => state.category);
-  const searchTerm = useSearchTermStore((state) => state.searchTerm);
+  const { searchTerm } = useSearchTermStore((state) => state);
+  const { sortCriteria } = useSortOrderStore((state) => state);
+
+  const [sortedTechSpecs, setSortedTechSpecs] = useState(techSpecs);
+
+  const filterByCategory = useCallback(
+    (techSpecs: TechSpec[]) => {
+      if (!selectedCategory) return techSpecs;
+      return techSpecs.filter(
+        (techSpec) => techSpec.category === selectedCategory,
+      );
+    },
+    [selectedCategory],
+  );
+
+  const filterBySearchTerm = useCallback(
+    (techSpecs: TechSpec[]) => {
+      if (!searchTerm) return techSpecs;
+      return techSpecs.filter((techSpec) =>
+        techSpec.label.toLowerCase().includes(searchTerm.toLowerCase()),
+      );
+    },
+    [searchTerm],
+  );
 
   useEffect(() => {
     if (!techSpecs) return;
@@ -28,17 +44,11 @@ function CustomTable() {
       setSortedTechSpecs(techSpecs);
       return;
     }
-
     if (selectedCategory) {
-      const techSpecsToFilter = [...techSpecs];
-
-      setSortedTechSpecs(
-        techSpecsToFilter.filter(
-          (techSpec) => techSpec.category === selectedCategory,
-        ),
-      );
+      const techSpecsToFilter = filterByCategory(techSpecs);
+      setSortedTechSpecs(techSpecsToFilter);
     }
-  }, [selectedCategory, techSpecs]);
+  }, [selectedCategory, techSpecs, filterByCategory]);
 
   useEffect(() => {
     if (!techSpecs) return;
@@ -48,49 +58,43 @@ function CustomTable() {
       return;
     }
 
-    const techSpecsToFilter = [...techSpecs];
+    const techSpecsToFilter = filterBySearchTerm(techSpecs);
 
-    setSortedTechSpecs(
-      techSpecsToFilter.filter((techSpec) =>
-        techSpec.label.toLowerCase().includes(searchTerm.toLowerCase()),
-      ),
-    );
-  }, [searchTerm, techSpecs]);
+    setSortedTechSpecs(techSpecsToFilter);
+  }, [searchTerm, techSpecs, filterBySearchTerm]);
 
-  if (status === "loading") {
-    return <p>loading...</p>;
-  }
-
-  if (status === "error") {
-    return <p>sth went wrong...</p>;
-  }
-
-  if (error) {
-    return <p>an error occurred</p>;
-  }
-
-  const handleColHeaderClick = (header: string, sortOrder: "asc" | "desc") => {
-    if (!sortedTechSpecs) {
+  useEffect(() => {
+    if (!sortCriteria.colHeader || !sortedTechSpecs) {
       return;
     }
 
-    const techSpecsToSort = [...sortedTechSpecs];
+    const newSortedTechSpecs = [...sortedTechSpecs];
+    sortTechSpecs(
+      newSortedTechSpecs,
+      sortCriteria.colHeader,
+      sortCriteria.sortOrder,
+    );
 
-    sortTechSpecs(techSpecsToSort, header, sortOrder);
+    setSortedTechSpecs(newSortedTechSpecs);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sortCriteria]);
 
-    setSortedTechSpecs(techSpecsToSort);
+  const renderStatus = () => {
+    if (status === "loading") return <p>loading...</p>;
+    if (status === "error" || error) return <p>An error occurred</p>;
+    return null;
   };
 
   return (
-    <table>
-      <caption>My personal Phone</caption>
-      <TableHead
-        colHeaders={tableHeaders}
-        InitialSortingOrder="asc"
-        onClick={handleColHeaderClick}
-      />
-      {sortedTechSpecs && <TableBody techSpecs={sortedTechSpecs} />}
-    </table>
+    <>
+      {renderStatus() || (
+        <table>
+          <caption>My personal Phone</caption>
+          <TableHead colHeaders={colHeaders} />
+          {sortedTechSpecs && <TableBody techSpecs={sortedTechSpecs} />}
+        </table>
+      )}
+    </>
   );
 }
 

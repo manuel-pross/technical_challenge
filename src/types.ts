@@ -15,28 +15,23 @@ export const categories = [
   "Audio",
 ] as const;
 
+export const colHeaders = [
+  "label",
+  "category",
+  "system_value",
+  "user_value",
+  "note",
+] as const;
+
 export type Category = (typeof categories)[number];
+export type ColHeader = (typeof colHeaders)[number];
+
+export type SortOrder = "asc" | "desc";
 
 export type Option = {
   label: string;
   value: string;
 };
-
-//export type Category =
-//  | "Dimensions"
-//  | "Physical Attributes"
-//  | "Appearance"
-//  | "Composition"
-//  | "Power"
-//  | "Display"
-//  | "Hardware"
-//  | "Memory"
-//  | "Software"
-//  | "Camera"
-//  | "Connectivity"
-//  | "Features"
-//  | "Durability"
-//  | "Audio";
 
 export type TechSpec = {
   id: number;
