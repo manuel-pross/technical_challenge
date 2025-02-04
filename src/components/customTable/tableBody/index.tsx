@@ -8,7 +8,7 @@ function TableBody({ techSpecs }: TableBodyProps) {
     <tbody>
       {techSpecs.map(
         ({ id, label, category, system_value, user_value, note }) => (
-          <tr key={id}>
+          <tr className="odd:bg-tokyo-black" key={id}>
             <th scope="row">{label}</th>
             <td>{category}</td>
             <td>{system_value}</td>
