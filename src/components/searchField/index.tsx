@@ -13,7 +13,6 @@ function SearchField() {
     setSearchTerm(newSearchTerm);
 
     if (newSearchTerm === "") {
-      console.log("searchterm", e.target.value);
       setSearchTermGlobal("");
       return;
     }
