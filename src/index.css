@@ -1,5 +1,35 @@
 @import "tailwindcss";
 
-p {
-  color: blue;
+@theme {
+  --color-tokyo-red: #f7768e;
+  --color-tokyo-orange: #ff9e64;
+  --color-tokyo-yellow: #e0af68;
+  --color-tokyo-neutral-light: #cfc9c2;
+  --color-tokyo-green: #9ece6a;
+  --color-tokyo-teal: #73daca;
+  --color-tokyo-cyan-light: #b4f9f8;
+  --color-tokyo-cyan: #2ac3de;
+  --color-tokyo-blue-light: #7dcfff;
+  --color-tokyo-blue: #7aa2f7;
+  --color-tokyo-purple: #bb9af7;
+  --color-tokyo-white: #c0caf5;
+  --color-tokyo-foreground: #a9b1d6;
+  --color-tokyo-text: #9aa5ce;
+  --color-tokyo-comment: #565f89;
+  --color-tokyo-black: #414868;
+  --color-tokyo-storm: #24283b;
+  --color-tokyo-night: #1a1b26;
+}
+
+body {
+  @apply bg-tokyo-night;
+}
+
+th,
+td {
+  @apply p-4;
+}
+
+th {
+  @apply text-left;
 }

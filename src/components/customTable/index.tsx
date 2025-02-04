@@ -88,8 +88,10 @@ function CustomTable() {
   return (
     <>
       {renderStatus() || (
-        <table>
-          <caption>My personal Phone</caption>
+        <table className="bg-tokyo-storm text-tokyo-white border-collapse">
+          <caption className="pl-3 pb-3 text-tokyo-white text-left">
+            My personal Phone
+          </caption>
           <TableHead colHeaders={colHeaders} />
           {sortedTechSpecs && <TableBody techSpecs={sortedTechSpecs} />}
         </table>
