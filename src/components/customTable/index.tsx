@@ -2,6 +2,7 @@ import TableBody from "@/components/customTable/tableBody";
 import TableHead from "@/components/customTable/tableHead";
 import useTechSpecs from "@/hooks/useTechSpecs";
 import { useCategoryStore } from "@/stores/categoryStore";
+import { useSearchTermStore } from "@/stores/searchTermStore";
 import { sortTechSpecs } from "@/utils";
 import { useEffect, useState } from "react";
 
@@ -18,14 +19,7 @@ function CustomTable() {
   const [sortedTechSpecs, setSortedTechSpecs] = useState(techSpecs);
 
   const selectedCategory = useCategoryStore((state) => state.category);
-
-  useEffect(() => {
-    if (!techSpecs) return;
-
-    const initalSortedTechSpecs = [...techSpecs];
-    sortTechSpecs(initalSortedTechSpecs, "label", "asc");
-    setSortedTechSpecs(initalSortedTechSpecs);
-  }, [status, techSpecs, error]);
+  const searchTerm = useSearchTermStore((state) => state.searchTerm);
 
   useEffect(() => {
     if (!techSpecs) return;
@@ -45,6 +39,23 @@ function CustomTable() {
       );
     }
   }, [selectedCategory, techSpecs]);
+
+  useEffect(() => {
+    if (!techSpecs) return;
+
+    if (!searchTerm) {
+      setSortedTechSpecs(techSpecs);
+      return;
+    }
+
+    const techSpecsToFilter = [...techSpecs];
+
+    setSortedTechSpecs(
+      techSpecsToFilter.filter((techSpec) =>
+        techSpec.label.toLowerCase().includes(searchTerm.toLowerCase()),
+      ),
+    );
+  }, [searchTerm, techSpecs]);
 
   if (status === "loading") {
     return <p>loading...</p>;
