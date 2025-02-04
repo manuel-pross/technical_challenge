@@ -8,7 +8,7 @@ type SearchTermStore = {
 
 export const useSearchTermStore = create<SearchTermStore>()((set) => ({
   searchTerm: "",
-  resetSearchTerm: () => set(() => ({ searchTerm: null })),
+  resetSearchTerm: () => set(() => ({ searchTerm: "" })),
   updateSearchTerm: (newSearchTerm: string) =>
     set(() => ({ searchTerm: newSearchTerm })),
 }));
