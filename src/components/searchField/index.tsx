@@ -7,14 +7,21 @@ function SearchField() {
   const { updateSearchTerm } = useSearchTermStore((state) => state);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.ctrlKey && event.key === "/") {
-        event.preventDefault();
-        searchInputRef?.current?.focus();
-      }
-    };
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.ctrlKey && event.key === "/") {
+      event.preventDefault();
+      searchInputRef?.current?.focus();
+    }
 
+    if (
+      event.key === "Escape" &&
+      document.activeElement === searchInputRef?.current
+    ) {
+      searchInputRef?.current?.blur();
+    }
+  };
+
+  useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
