@@ -1,10 +1,26 @@
 import { useSearchTermStore } from "@/stores/searchTermStore";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 
 function SearchField() {
   const [searchTerm, setSearchTerm] = useState("");
   const { updateSearchTerm } = useSearchTermStore((state) => state);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.ctrlKey && event.key === "/") {
+        event.preventDefault();
+        searchInputRef?.current?.focus();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newSearchTerm = e.target.value;
@@ -30,6 +46,7 @@ function SearchField() {
         autoComplete="off"
         name="searchField"
         placeholder="Type to search for label..."
+        ref={searchInputRef}
         value={searchTerm}
         onChange={handleChange}
       />
