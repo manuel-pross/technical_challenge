@@ -3,9 +3,7 @@ import { useState } from "react";
 
 function SearchField() {
   const [searchTerm, setSearchTerm] = useState("");
-  const setSearchTermGlobal = useSearchTermStore(
-    (state) => state.updateSearchTerm,
-  );
+  const { updateSearchTerm } = useSearchTermStore((state) => state);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newSearchTerm = e.target.value;
@@ -13,11 +11,11 @@ function SearchField() {
     setSearchTerm(newSearchTerm);
 
     if (newSearchTerm === "") {
-      setSearchTermGlobal("");
+      updateSearchTerm("");
       return;
     }
 
-    setSearchTermGlobal(newSearchTerm);
+    updateSearchTerm(newSearchTerm);
   };
 
   return (
