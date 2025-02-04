@@ -6,7 +6,7 @@ function useTechSpecs() {
     queryKey: ["techSpecs"],
     refetchOnWindowFocus: false,
     queryFn: async () => {
-      const res = await fetch("./src/assets/data.json");
+      const res = await fetch("./technical_challenge/src/assets/data.json");
 
       const techSpecs = (await res.json()) as TechSpec[];
       return techSpecs;
