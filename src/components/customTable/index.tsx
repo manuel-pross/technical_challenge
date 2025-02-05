@@ -92,9 +92,11 @@ function CustomTable() {
           <caption className="pl-4 pb-3 text-tokyo-white text-left">
             Phone of my dreams
           </caption>
-          {colHeaders.map((col) => (
-            <col key={col} span={1} className="w-[20px]" />
-          ))}
+          <colgroup>
+            {colHeaders.map((col) => (
+              <col key={col} span={1} className="w-[20px]" />
+            ))}
+          </colgroup>
           <TableHead colHeaders={colHeaders} />
           {sortedTechSpecs && <TableBody techSpecs={sortedTechSpecs} />}
         </table>
