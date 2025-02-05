@@ -84,7 +84,7 @@ function CategoryHeader() {
 
   return (
     <Select
-      className="w-[150px] md:w-[200px]"
+      className="w-[130px] xl:w-[200px]"
       styles={customStyles}
       options={options}
       value={selectedOption}
