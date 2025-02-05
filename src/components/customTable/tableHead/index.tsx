@@ -10,7 +10,7 @@ function TableHead({ colHeaders }: TableHeadProps) {
     <thead>
       <tr>
         {colHeaders.map((header) => (
-          <th key={header}>
+          <th className="border-b-tokyo-neutral-light border-b-2" key={header}>
             {header === "category" ? (
               <CategoryHeader />
             ) : (
