@@ -24,7 +24,7 @@
 }
 
 body {
-  @apply bg-tokyo-night;
+  @apply bg-tokyo-night max-w-[2000px] my-0 mx-auto;
 }
 
 th,
