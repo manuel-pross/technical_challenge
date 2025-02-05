@@ -42,9 +42,16 @@ function SearchField() {
     updateSearchTerm(newSearchTerm);
   };
 
+  const handleClick = () => {
+    searchInputRef?.current?.focus();
+  };
+
   return (
     <label className="relative w-fit h-fit">
-      <button className="peer absolute flex items-center justify-center right-0 w-[50px] h-[50px] border-none rounded-[50%] text-xl font-bold outline-none hover:cursor-pointer text-tokyo-black bg-transparent">
+      <button
+        className="peer absolute flex items-center justify-center right-0 w-[50px] h-[50px] border-none rounded-[50%] text-xl font-bold outline-none hover:cursor-pointer text-tokyo-black bg-transparent"
+        onClick={handleClick}
+      >
         <FaMagnifyingGlass />
       </button>
       <input
@@ -52,7 +59,7 @@ function SearchField() {
         type="text"
         autoComplete="off"
         name="searchField"
-        placeholder="Type to search for label..."
+        placeholder="search for label..."
         ref={searchInputRef}
         value={searchTerm}
         onChange={handleChange}
