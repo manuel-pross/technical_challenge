@@ -60,6 +60,10 @@ const customStyles: StylesConfig = {
       color: "#f7768e",
     },
   }),
+  noOptionsMessage: (baseStyles) => ({
+    ...baseStyles,
+    color: "c0caf5",
+  }),
 };
 
 function CategoryHeader() {
