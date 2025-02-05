@@ -7,8 +7,10 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="block py-5 md:flex md:flex-col md:items-center">
-        <SearchField />
+      <div className="block py-5 md:flex md:flex-col md:items-center md:gap-3">
+        <div className="flex justify-center">
+          <SearchField />
+        </div>
         <DataTable />
       </div>
     </QueryClientProvider>
