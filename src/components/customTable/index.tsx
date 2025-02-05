@@ -89,7 +89,7 @@ function CustomTable() {
     <>
       {renderStatus() || (
         <table className="bg-tokyo-storm border-collapse w-full md:table-fixed md:w-[750px] lg:w-[900px] xl:w-[1200px]">
-          <caption className="pl-4 pb-3 text-tokyo-white text-left">
+          <caption className="pl-4 pb-3 text-tokyo-white text-left text-3xl">
             Phone of my dreams
           </caption>
           <colgroup>
