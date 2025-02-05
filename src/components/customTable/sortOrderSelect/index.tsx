@@ -23,7 +23,7 @@ function SortOrderSelect({ text }: SortOrderSelectProps) {
 
   return (
     <button
-      className="hover:cursor-pointer"
+      className="text-lg hover:cursor-pointer"
       type="button"
       onClick={handleClick}
     >
