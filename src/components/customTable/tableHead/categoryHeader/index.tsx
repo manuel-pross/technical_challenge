@@ -1,14 +1,14 @@
 import { useCategoryStore } from "@/stores/categoryStore";
 import { categories, Category, Option } from "@/types";
 import { useState } from "react";
-import Select, { StylesConfig } from "react-select";
+import Select, { ActionMeta, StylesConfig } from "react-select";
 
 const options: Option[] = categories.map((category) => ({
   label: category,
   value: category,
 }));
 
-const customStyles: StylesConfig = {
+const customStyles: StylesConfig<Option, false> = {
   option: (baseStyles, state) => ({
     ...baseStyles,
     color: state.isSelected ? "#414868" : "#c0caf5",
