@@ -3,8 +3,10 @@ import { TechSpec } from "@/types";
 export function sortTechSpecs(
   techSpecs: TechSpec[],
   rowHeader: string,
-  sortingOrder: "asc" | "desc",
+  sortingOrder: "asc" | "desc" | "",
 ): void {
+  if (sortingOrder === "") return;
+
   techSpecs.sort((a, b) => {
     const valueA = a[rowHeader as keyof TechSpec];
     const valueB = b[rowHeader as keyof TechSpec];
