@@ -26,7 +26,7 @@ export const colHeaders = [
 export type Category = (typeof categories)[number];
 export type ColHeader = (typeof colHeaders)[number];
 
-export type SortOrder = "asc" | "desc";
+export type SortOrder = "asc" | "desc" | "";
 
 export type Option = {
   label: string;

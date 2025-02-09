@@ -12,7 +12,7 @@ type SortOrderStore = {
 };
 
 export const useSortOrderStore = create<SortOrderStore>()((set) => ({
-  sortCriteria: { sortOrder: "asc", colHeader: undefined },
+  sortCriteria: { sortOrder: "", colHeader: undefined },
   updateSortOrder: (newSortCriteria: SortCriteria) =>
     set(() => ({ sortCriteria: newSortCriteria })),
 }));
